@@ -1,0 +1,79 @@
+{
+  "info": {
+    "name": "Northern Coast Beverages - Lead Scoring API",
+    "description": "API collection for the Lead Scoring endpoint.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Score Lead (Hot Example)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lead_id\": \"S001\",\n  \"channel\": \"whatsapp\",\n  \"conversation\": [\n    {\"role\": \"lead\", \"text\": \"UAE distributor, 3 FCL/month Red Bull, 8 years importing energy drinks. Looking for original Austrian product.\"},\n    {\"role\": \"agent\", \"text\": \"Volume target on Red Bull specifically?\"},\n    {\"role\": \"lead\", \"text\": \"2-3 FCL/month sustained. ~250 retail accounts across UAE.\"}\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/score",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "score"]
+        }
+      }
+    },
+    {
+      "name": "Score Lead (Cold Example)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lead_id\": \"S002\",\n  \"channel\": \"email\",\n  \"conversation\": [\n    {\"role\": \"lead\", \"text\": \"hey can I get a few cans of red bull for my office party\"}\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/score",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "score"]
+        }
+      }
+    },
+    {
+      "name": "Score Lead (Ambiguous Example)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lead_id\": \"S003\",\n  \"channel\": \"email\",\n  \"conversation\": [\n    {\"role\": \"lead\", \"text\": \"Ghana-based distributor looking for Coca-Cola products. New entrant, license in process — expected 6 weeks. Initial volume 1 FCL/month.\"}\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/score",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "score"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}

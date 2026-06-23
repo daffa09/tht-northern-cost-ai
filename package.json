@@ -1,0 +1,17 @@
+{
+  "name": "northern-coast-lead-scoring",
+  "version": "1.0.0",
+  "description": "Lead scoring endpoint for Northern Coast Beverages",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "node api/index.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
