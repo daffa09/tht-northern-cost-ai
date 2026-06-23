@@ -2,8 +2,16 @@
 
 This is a deployed HTTP endpoint for scoring B2B beverage inbound leads.
 
+**🌍 Live API Documentation (Swagger):** 
+[https://tht-northern-cost-ai.vercel.app/api-docs/](https://tht-northern-cost-ai.vercel.app/api-docs/)
+
+**🚀 Base API Endpoint:**
+`https://tht-northern-cost-ai.vercel.app/api/score`
+
+---
+
 ## Time Spent
-**~30 minutes**
+**~10 minutes**
 The implementation was fast and straightforward. I relied on AI tooling to quickly bootstrap the Vercel + Express setup and generate the initial scoring prompt.
 
 ## Model Choice & Engineering
@@ -29,9 +37,3 @@ The endpoint handles the 3 core scenarios smoothly:
    - *Input:* Ghana-based distributor... New entrant, license in process... 1 FCL/month.
    - *Result:* Mid Score, Tier: **Warm**, Routing: `nurture_pool`. (LLM correctly recognizes the potential but flags the pending license).
 
-## With More Time
-If I had more time to refine this system, I would:
-- **Implement Pydantic-like Structured Schemas:** Enforce the exact JSON Schema natively in the Gemini SDK configuration for 100% robust type safety, rather than relying heavily on the text prompt.
-- **Add Tracing / Logging:** Integrate Langfuse or Helicone to trace LLM inputs/outputs, monitor latency, and track cost per request.
-- **Resilience:** Implement a retry mechanism with exponential backoff and a fallback LLM (e.g., GPT-4o-mini) if the primary API call fails.
-- **Security:** Secure the `/api/score` endpoint using Bearer tokens (API Keys) instead of leaving it fully open.

@@ -86,7 +86,17 @@ const swaggerDocument = {
 };
 
 // Mount Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// Untuk Vercel, kita perlu ngambil JS & CSS Swagger dari CDN
+// karena Vercel Serverless kadang gagal nge-serve static file dari node_modules.
+const swaggerOptions = {
+  customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css',
+  customJs: [
+    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-bundle.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.js'
+  ]
+};
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerOptions));
 
 // Scoring Endpoint
 app.post('/api/score', async (req, res) => {
